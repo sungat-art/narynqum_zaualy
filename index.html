@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Нарынқұм зауалы - Интерактивті тапсырмалар</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Жаңа шрифттер: Lora (салмақты, классикалық) және Raleway (таза, заманауи) */
+        @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,700;1,400&family=Raleway:wght@300;400;600;700&display=swap');
+        
+        body {
+            font-family: 'Raleway', sans-serif;
+            /* НЕГІЗГІ ӨЗГЕРІС: Артқы фонға сіздің суретіңіз қойылды */
+            background-image: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                              url('Gemini_Generated_Image_yma088yma088yma0.png');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        h1, h2, .italic-thought {
+            font-family: 'Lora', serif;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+        }
+
+        .instruction-box {
+            background: rgba(240, 249, 255, 0.9);
+            border-left: 4px solid #0369a1;
+            padding: 1.25rem;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            border-radius: 0.75rem;
+            line-height: 1.6;
+        }
+
+        .tab-btn.active {
+            background-color: #0c4a6e;
+            color: white;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(12, 74, 110, 0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.7s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(15px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Тақырып блогын фоннан ерекшелеу */
+        .header-style {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(234, 179, 8, 0.3);
+        }
+    </style>
+</head>
+<body class="p-4 md:p-8 min-h-screen flex items-center justify-center">
+
+    <div class="max-w-4xl w-full mx-auto">
+        <header class="text-center mb-10 header-style text-white p-12 rounded-[2.5rem] shadow-2xl relative overflow-hidden border-b-4 border-yellow-600">
+            <div class="relative z-10">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 text-yellow-500 drop-shadow-[0_2px_15px_rgba(0,0,0,0.9)]">Нарынқұм зауалы</h1>
+                <p class="text-xl md:text-2xl opacity-90 font-light italic-thought">Мұхтар Шахановтың рухты поэмасы</p>
+            </div>
+            <div class="absolute -bottom-10 -right-10 opacity-10 pointer-events-none">
+                <span class="text-[200px]">📜</span>
+            </div>
+        </header>
+
+        <div class="flex flex-wrap gap-4 mb-10 justify-center">
+            <button onclick="openTab('author', this)" class="tab-btn active glass-effect px-6 py-3.5 rounded-2xl border border-sky-900/10 text-sky-900 font-bold hover:shadow-lg transition-all">Автор орындығы</button>
+            <button onclick="openTab('assoc', this)" class="tab-btn glass-effect px-6 py-3.5 rounded-2xl border border-sky-900/10 text-sky-900 font-bold hover:shadow-lg transition-all">Ассоциация</button>
+            <button onclick="openTab('image', this)" class="tab-btn glass-effect px-6 py-3.5 rounded-2xl border border-sky-900/10 text-sky-900 font-bold hover:shadow-lg transition-all">Суретпен сөз</button>
+            <button onclick="openTab('bank', this)" class="tab-btn glass-effect px-6 py-3.5 rounded-2xl border border-sky-900/10 text-sky-900 font-bold hover:shadow-lg transition-all">Сөздер банкісі</button>
+            <button onclick="openTab('race', this)" class="tab-btn glass-effect px-6 py-3.5 rounded-2xl border border-sky-900/10 text-sky-900 font-bold hover:shadow-lg transition-all">Кезекті жарыс</button>
+        </div>
+
+        <main class="space-y-6">
+            <div id="author" class="tab-content active glass-effect p-8 md:p-12 rounded-[2rem] shadow-2xl border-t-8 border-yellow-700">
+                <div class="flex items-center mb-6">
+                    <div class="bg-yellow-600 text-white p-4 rounded-2xl shadow-md mr-5">
+                        <span class="text-3xl">🪑</span>
+                    </div>
+                    <h2 class="text-3xl font-bold text-stone-800">«Автор орындығы» ойыны</h2>
+                </div>
+                
+                <div class="instruction-box">
+                    <p><strong>Түсініктеме:</strong> Бұл әдіс оқушының шығарма авторының ішкі әлеміне енуіне, оның көзқарасын түсінуге бағытталған. <br>
+                    <strong>Оқушы не істеуі керек?</strong> Өзін Мұхтар Шахановтың орнына қойып, берілген сұраққа автордың стилінде (рухты, философиялық, өткір) жауап жазуы қажет.</p>
+                </div>
+                
+                <div class="bg-sky-50 p-8 rounded-2xl border-l-8 border-sky-800 mb-8 shadow-inner italic-thought text-xl text-sky-900 leading-relaxed">
+                    "Мұхтар аға, Махамбеттің басы кесілгенде Нарын құмы неге жылады деп ойлайсыз? Бұл табиғаттың зауалы ма, әлде рухтың жеңілісі ме?"
+                </div>
+
+                <textarea id="authorResponse" class="w-full p-6 border-2 border-stone-200 rounded-2xl focus:border-sky-800 outline-none transition-all bg-white shadow-sm text-lg leading-relaxed" rows="5" placeholder="Автордың атынан толғаныс жазыңыз..."></textarea>
+                <div class="flex justify-end mt-6">
+                    <button onclick="saveFeedback('authorResponse')" class="bg-sky-900 text-white px-10 py-4 rounded-2xl font-bold hover:bg-black shadow-xl transform hover:-translate-y-1 transition-all">Жауапты сақтау</button>
+                </div>
+            </div>
+
+            <div id="assoc" class="tab-content glass-effect p-8 md:p-12 rounded-[2rem] shadow-2xl border-t-8 border-red-800">
+                <h2 class="text-2xl font-bold mb-6 text-stone-800 flex items-center">
+                    <span class="mr-3 text-3xl">🧬</span> «Ассоциация» ойыны
+                </h2>
+
+                <div class="instruction-box">
+                    <p><strong>Түсініктеме:</strong> Оқушының бейнелі ойлауын және кейіпкерлер мен ұғымдар арасындағы логикалық байланысты табуын тексереді.<br>
+                    <strong>Оқушы не істеуі керек?</strong> "Махамбет" және "Сатқындық" сөздерін естігенде ойыңызға бірінші келетін, поэмамен байланысты 3 маңызды сөзді (ұғымды) жазу керек.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-10 mt-8">
+                    <div class="space-y-4">
+                        <div class="text-center p-5 bg-stone-800 text-white rounded-2xl font-bold tracking-widest">МАХАМБЕТ</div>
+                        <input type="text" class="w-full p-4 border-2 border-stone-100 rounded-xl focus:border-sky-700 outline-none transition-all" placeholder="1. Азаттық">
+                        <input type="text" class="w-full p-4 border-2 border-stone-100 rounded-xl focus:border-sky-700 outline-none transition-all" placeholder="2. ...">
+                        <input type="text" class="w-full p-4 border-2 border-stone-100 rounded-xl focus:border-sky-700 outline-none transition-all" placeholder="3. ...">
+                    </div>
+                    <div class="space-y-4">
+                        <div class="text-center p-5 bg-red-900 text-white rounded-2xl font-bold tracking-widest">САТҚЫНДЫҚ</div>
+                        <input type="text" class="w-full p-4 border-2 border-stone-100 rounded-xl focus:border-red-700 outline-none transition-all" placeholder="1. Опасыздық">
+                        <input type="text" class="w-full p-4 border-2 border-stone-100 rounded-xl focus:border-red-700 outline-none transition-all" placeholder="2. ...">
+                        <input type="text" class="w-full p-4 border-2 border-stone-100 rounded-xl focus:border-red-700 outline-none transition-all" placeholder="3. ...">
+                    </div>
+                </div>
+            </div>
+
+            <div id="image" class="tab-content glass-effect p-8 md:p-12 rounded-[2rem] shadow-2xl border-t-8 border-green-800">
+                <h2 class="text-2xl font-bold mb-6 text-stone-800">🖼️ «Суретпен сөз құрау»</h2>
+
+                <div class="instruction-box">
+                    <p><strong>Түсініктеме:</strong> Шығармадағы көркемдік детальдар мен символдардың мағынасын ашуға арналған.<br>
+                    <strong>Оқушы не істеуі керек?</strong> Берілген символдардың (қанжар, құм, шынжыр) поэмада қандай рөл атқаратынын немесе нені білдіретінін қысқаша түсіндіріп жазу керек.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <div class="bg-white p-8 rounded-3xl shadow-sm text-center border-b-4 border-stone-100">
+                        <div class="text-7xl mb-6">🗡️</div>
+                        <p class="font-bold mb-3 text-stone-700">Қанжар</p>
+                        <textarea class="w-full p-3 border rounded-xl text-sm" rows="3" placeholder="Символдық мағынасы..."></textarea>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm text-center border-b-4 border-stone-100">
+                        <div class="text-7xl mb-6">🌄</div>
+                        <p class="font-bold mb-3 text-stone-700">Нарын</p>
+                        <textarea class="w-full p-3 border rounded-xl text-sm" rows="3" placeholder="Символдық мағынасы..."></textarea>
+                    </div>
+                    <div class="bg-white p-8 rounded-3xl shadow-sm text-center border-b-4 border-stone-100">
+                        <div class="text-7xl mb-6">⛓️</div>
+                        <p class="font-bold mb-3 text-stone-700">Шынжыр</p>
+                        <textarea class="w-full p-3 border rounded-xl text-sm" rows="3" placeholder="Символдық мағынасы..."></textarea>
+                    </div>
+                </div>
+            </div>
+
+            <div id="bank" class="tab-content glass-effect p-8 md:p-12 rounded-[2rem] shadow-2xl border-t-8 border-purple-800">
+                <h2 class="text-2xl font-bold mb-6 text-stone-800">💰 «Сөздер банкісі» әдісі</h2>
+
+                <div class="instruction-box">
+                    <p><strong>Түсініктеме:</strong> Сөздік қорды байыту және мәтін құрау дағдысын дамытуға арналған.<br>
+                    <strong>Оқушы не істеуі керек?</strong> "Банктегі" берілген 4 тірек сөзді міндетті түрде қатыстыра отырып, поэманың негізгі идеясын ашатын шағын мәтін (3-4 сөйлем) құрастыру.</p>
+                </div>
+
+                <div class="flex flex-wrap gap-4 mb-10">
+                    <span class="bg-purple-50 text-purple-900 px-6 py-3 rounded-2xl font-bold border-2 border-purple-100 shadow-sm tracking-wide">АР-ҰЖДАН</span>
+                    <span class="bg-purple-50 text-purple-900 px-6 py-3 rounded-2xl font-bold border-2 border-purple-100 shadow-sm tracking-wide">ОПАСЫЗДЫҚ</span>
+                    <span class="bg-purple-50 text-purple-900 px-6 py-3 rounded-2xl font-bold border-2 border-purple-100 shadow-sm tracking-wide">ҚАСІРЕТ</span>
+                    <span class="bg-purple-50 text-purple-900 px-6 py-3 rounded-2xl font-bold border-2 border-purple-100 shadow-sm tracking-wide">РУХ ЖЕҢІСІ</span>
+                </div>
+                <textarea class="w-full p-8 border-2 border-purple-50 rounded-3xl outline-none focus:border-purple-600 bg-white text-lg leading-relaxed shadow-inner" rows="6" placeholder="Тірек сөздерді пайдаланып, рухты мәтін құраңыз..."></textarea>
+            </div>
+
+            <div id="race" class="tab-content glass-effect p-8 md:p-12 rounded-[2rem] shadow-2xl border-t-8 border-sky-800">
+                <h2 class="text-2xl font-bold mb-6 text-stone-800">🏁 «Кезекті жарыс» ойыны</h2>
+
+                <div class="instruction-box">
+                    <p><strong>Түсініктеме:</strong> Тақырыпты қаншалықты меңгергенін тексеруге арналған жылдам бақылау.<br>
+                    <strong>Оқушы не істеуі керек?</strong> Сұрақтарды мұқият оқып, дұрыс деп тапқан нұсқаларды белгілеп, "Нәтижені білу" батырмасын басу керек.</p>
+                </div>
+
+                <div class="space-y-8">
+                    <div class="p-6 bg-white rounded-3xl border-2 border-stone-50 shadow-sm">
+                        <p class="font-bold text-lg mb-5 text-stone-800 italic-thought">1. Поэмадағы басты трагедиялық қақтығыс не?</p>
+                        <div class="grid gap-4">
+                            <label class="flex items-center p-5 border-2 border-stone-100 rounded-2xl cursor-pointer hover:bg-sky-50 transition-all"><input type="radio" name="q1" value="a" class="w-5 h-5 mr-4 accent-sky-800"> Табиғат пен адам арасындағы күрес</label>
+                            <label class="flex items-center p-5 border-2 border-stone-100 rounded-2xl cursor-pointer hover:bg-sky-50 transition-all"><input type="radio" name="q1" value="b" class="w-5 h-5 mr-4 accent-sky-800"> Адалдық пен сатқындық арасындағы арпалыс</label>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-white rounded-3xl border-2 border-stone-50 shadow-sm">
+                        <p class="font-bold text-lg mb-5 text-stone-800 italic-thought">2. Махамбеттің өліміне себепкер болған сатқын кейіпкер кім?</p>
+                        <div class="grid gap-4">
+                            <label class="flex items-center p-5 border-2 border-stone-100 rounded-2xl cursor-pointer hover:bg-sky-50 transition-all"><input type="radio" name="q2" value="a" class="w-5 h-5 mr-4 accent-sky-800"> Ықылас</label>
+                            <label class="flex items-center p-5 border-2 border-stone-100 rounded-2xl cursor-pointer hover:bg-sky-50 transition-all"><input type="radio" name="q2" value="b" class="w-5 h-5 mr-4 accent-sky-800"> Баймағамбет</label>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-white rounded-3xl border-2 border-stone-50 shadow-sm">
+                        <p class="font-bold text-lg mb-5 text-stone-800 italic-thought">3. "Зауал" сөзінің астарлы мағынасы қандай?</p>
+                        <div class="grid gap-4">
+                            <label class="flex items-center p-5 border-2 border-stone-100 rounded-2xl cursor-pointer hover:bg-sky-50 transition-all"><input type="radio" name="q3" value="a" class="w-5 h-5 mr-4 accent-sky-800"> Құмды дауылдың басталуы</label>
+                            <label class="flex items-center p-5 border-2 border-stone-100 rounded-2xl cursor-pointer hover:bg-sky-50 transition-all"><input type="radio" name="q3" value="b" class="w-5 h-5 mr-4 accent-sky-800"> Ұлттық рухтың қасіреті мен адамдық қасиеттің жоғалуы</label>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-white rounded-3xl border-2 border-stone-50 shadow-sm">
+                        <p class="font-bold text-lg mb-5 text-stone-800 italic-thought">4. Поэманың негізгі идеясы қай құндылыққа негізделген?</p>
+                        <div class="grid gap-4">
+                            <label class="flex items-center p-5 border-2 border-stone-100 rounded-2xl cursor-pointer hover:bg-sky-50 transition-all"><input type="radio" name="q4" value="a" class="w-5 h-5 mr-4 accent-sky-800"> Еркіндік пен адамдық ар-ұждан тазалығы</label>
+                            <label class="flex items-center p-5 border-2 border-stone-100 rounded-2xl cursor-pointer hover:bg-sky-50 transition-all"><input type="radio" name="q4" value="b" class="w-5 h-5 mr-4 accent-sky-800"> Билік пен мансап жолындағы күрес</label>
+                        </div>
+                    </div>
+
+                    <div class="p-6 bg-white rounded-3xl border-2 border-stone-50 shadow-sm">
+                        <p class="font-bold text-lg mb-5 text-stone-800 italic-thought">5. Поэмадағы Махамбет бейнесі ненің символы?</p>
+                        <div class="grid gap-4">
+                            <label class="flex items-center p-5 border-2 border-stone-100 rounded-2xl cursor-pointer hover:bg-sky-50 transition-all"><input type="radio" name="q5" value="a" class="w-5 h-5 mr-4 accent-sky-800"> Жалғыздық пен мұңның символы</label>
+                            <label class="flex items-center p-5 border-2 border-stone-100 rounded-2xl cursor-pointer hover:bg-sky-50 transition-all"><input type="radio" name="q5" value="b" class="w-5 h-5 mr-4 accent-sky-800"> Өлмес рух пен қайтпас қайсарлықтың символы</label>
+                        </div>
+                    </div>
+
+                    <button onclick="checkQuiz()" class="w-full bg-sky-950 text-white font-bold py-6 rounded-3xl hover:bg-stone-900 shadow-2xl transition-all tracking-[0.2em] text-lg">НӘТИЖЕНІ БІЛУ</button>
+                </div>
+                <div id="result" class="hidden mt-10 p-8 rounded-3xl text-center text-xl font-bold"></div>
+            </div>
+        </main>
+
+        <footer class="mt-20 mb-10 text-center text-white/90">
+            <div class="w-24 h-1 bg-yellow-500 mx-auto mb-6"></div>
+            <p class="text-xs tracking-[0.3em] font-bold uppercase opacity-80">Мұхтар Шаханов • «Нарынқұм зауалы» • Цифрлық Сабақ</p>
+        </footer>
+    </div>
+
+    <script>
+        function openTab(tabId, btn) {
+            const contents = document.querySelectorAll('.tab-content');
+            contents.forEach(content => content.classList.remove('active'));
+            document.getElementById(tabId).classList.add('active');
+            
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(b => b.classList.remove('active', 'bg-sky-900', 'text-white'));
+            btn.classList.add('active', 'bg-sky-900', 'text-white');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function checkQuiz() {
+            const answers = { q1: 'b', q2: 'a', q3: 'b', q4: 'a', q5: 'b' };
+            let score = 0;
+            let total = 5;
+
+            for (let i = 1; i <= total; i++) {
+                const selected = document.querySelector(`input[name="q${i}"]:checked`);
+                if (selected && selected.value === answers[`q${i}`]) score++;
+            }
+
+            const resultDiv = document.getElementById('result');
+            resultDiv.classList.remove('hidden');
+            
+            if (score === total) {
+                resultDiv.innerHTML = `🌟 Керемет! ${score}/${total}. Сіз поэманы толық меңгердіңіз!`;
+                resultDiv.className = "mt-10 p-8 rounded-3xl text-center text-xl font-bold bg-green-50 text-green-900 border-2 border-green-200 animate-pulse";
+            } else if (score >= 3) {
+                resultDiv.innerHTML = `✅ Жақсы! ${score}/${total}. Қайталау артық етпейді.`;
+                resultDiv.className = "mt-10 p-8 rounded-3xl text-center text-xl font-bold bg-yellow-50 text-yellow-900 border-2 border-yellow-200";
+            } else {
+                resultDiv.innerHTML = `⚠️ Нәтиже төмен: ${score}/${total}. Шығарманы қайта оқу қажет.`;
+                resultDiv.className = "mt-10 p-8 rounded-3xl text-center text-xl font-bold bg-red-50 text-red-900 border-2 border-red-200";
+            }
+            resultDiv.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function saveFeedback(id) {
+            if (document.getElementById(id).value.trim() !== "") {
+                alert("Рахмет! Жауабыңыз жүйеге енгізілді.");
+            } else {
+                alert("Тапсырманы орындап болған соң сақтау батырмасын басыңыз.");
+            }
+        }
+    </script>
+</body>
+</html>
